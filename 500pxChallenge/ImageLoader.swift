@@ -1,6 +1,6 @@
 //
 //  ImageLoader.swift
-//  SquareChallenge
+//  500pxChallenge
 //
 //  Created by John De Guzman on 2020-07-06.
 //
@@ -16,7 +16,7 @@ class ImageLoader: ObservableObject {
     let imageDownloader = ImageDownloader(
         configuration: ImageDownloader.defaultURLSessionConfiguration(),
         downloadPrioritization: .fifo,
-        maximumActiveDownloads: 4,
+        maximumActiveDownloads: 10,
         imageCache: AutoPurgingImageCache()
     )
     

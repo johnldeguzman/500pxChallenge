@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import Alamofire
+
+
+class PhotoService {
+    
+    func getPhotos(page: Int, onComplete: @escaping ([Photo]?, AFError?) -> ()) {
+        let url = [NetworkingConstants.baseAPI, NetworkingConstants.version, NetworkingConstants.photos].createURL
+        let parameters: Parameters = ["feature": "popular", "page": page, "consumer_key": NetworkingConstants.authenticationKeyls]
+            AF.request(url, parameters: parameters).responseDecodable{ (response: DataResponse<Photos, AFError>) in
+                onComplete(response.value?.photos, response.error)
+            }
+    }
+}
+

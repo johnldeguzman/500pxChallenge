@@ -19,8 +19,8 @@ struct ContentView: View {
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach (store.photo) { photoItem in
                             if let url = URL(string: photoItem.imageURL.first ?? "") {
-                                NavigationLink(destination: PhotoDetailView()) {
-                                    SingleImageRow(url: url)
+                                NavigationLink(destination: PhotoDetailView(url: url, user: photoItem.user, title: photoItem.name, subtitle: photoItem.description)) {
+                                    SingleImageRow(url: url, user: photoItem.user)
                                         .onAppear{
                                             if store.photo.isLastItem(photoItem) {
                                                 page += 1
